@@ -24,6 +24,7 @@ const translations = {
       about: "About",
       services: "Services",
       testimonials: "Testimonials",
+      portfolio: "Portfolio",
       contact: "Contact",
     },
     onboarding: {
@@ -90,6 +91,7 @@ const translations = {
       about: "Sobre",
       services: "Serviços",
       testimonials: "Depoimentos",
+      portfolio: "Portfólio",
       contact: "Contato",
     },
     onboarding: {
@@ -157,6 +159,7 @@ const translations = {
       about: "Sobre mí",
       services: "Servicios",
       testimonials: "Testimonios",
+      portfolio: "Portafolio",
       contact: "Contacto",
     },
     onboarding: {

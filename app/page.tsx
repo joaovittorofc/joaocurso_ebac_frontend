@@ -19,9 +19,10 @@ import { LanguageProvider } from "@/contexts/language-context"
 import { UserProvider } from "@/contexts/user-context"
 import { Button } from "@/components/ui/button"
 import { HelpCircle, ChevronLeft, ChevronRight } from "lucide-react"
+import PortfolioSection from "@/components/sections/portfolio-section"
 
 export type Language = "en" | "pt" | "es"
-export type Section = "home" | "about" | "services" | "testimonials" | "quiz" | "contact"
+export type Section = "home" | "about" | "services" | "testimonials" | "portfolio" | "quiz" | "contact"
 
 export default function HomePage() {
   const [currentSection, setCurrentSection] = useState<Section>("home")
@@ -117,7 +118,7 @@ export default function HomePage() {
   }
 
   const handleNextSection = () => {
-    const sections: Section[] = ["home", "about", "services", "testimonials", "quiz", "contact"]
+    const sections: Section[] = ["home", "about", "services", "testimonials", "portfolio", "quiz", "contact"]
     const currentIndex = sections.indexOf(currentSection)
 
     if (currentIndex < sections.length - 1) {
@@ -131,7 +132,7 @@ export default function HomePage() {
   }
 
   const handlePrevSection = () => {
-    const sections: Section[] = ["home", "about", "services", "testimonials", "quiz", "contact"]
+    const sections: Section[] = ["home", "about", "services", "testimonials", "portfolio", "quiz", "contact"]
     const currentIndex = sections.indexOf(currentSection)
 
     if (currentIndex > 0) {
@@ -275,6 +276,7 @@ export default function HomePage() {
                         {currentSection === "about" && <AboutSection language={language} />}
                         {currentSection === "services" && <ServicesSection language={language} />}
                         {currentSection === "testimonials" && <TestimonialsSection language={language} />}
+                        {currentSection === "portfolio" && <PortfolioSection language={language} />}
                         {currentSection === "contact" && <ContactSection language={language} />}
                       </div>
                     </div>

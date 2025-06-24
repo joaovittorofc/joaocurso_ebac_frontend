@@ -4,7 +4,18 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useLanguage } from "@/contexts/language-context"
 import { useUser } from "@/contexts/user-context"
-import { User, Briefcase, MessageSquare, Gift, Mail, ChevronRight, ChevronLeft, X, Info } from "lucide-react"
+import {
+  User,
+  Briefcase,
+  MessageSquare,
+  Gift,
+  Mail,
+  ChevronRight,
+  ChevronLeft,
+  X,
+  Info,
+  FolderOpen,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Modal from "@/components/ui/modal"
 
@@ -86,6 +97,7 @@ export default function OnboardingFunnel({ onComplete }: OnboardingFunnelProps) 
     { icon: Briefcase, color: "bg-blue-500", name: "Services" },
     { icon: User, color: "bg-purple-500", name: "About" },
     { icon: MessageSquare, color: "bg-green-500", name: "Testimonials" },
+    { icon: FolderOpen, color: "bg-orange-500", name: "Portfolio" },
     { icon: Gift, color: "bg-yellow-500", name: "Quiz" },
     { icon: Mail, color: "bg-red-500", name: "Contact" },
   ]

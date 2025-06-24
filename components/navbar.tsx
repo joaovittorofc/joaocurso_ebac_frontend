@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Home, User, Briefcase, MessageSquare, Gift, Mail, ChevronLeft, ChevronRight } from "lucide-react"
+import { Home, User, Briefcase, MessageSquare, Gift, Mail, ChevronLeft, ChevronRight, FolderOpen } from "lucide-react"
 import type { Language, Section } from "@/app/page"
 import { useLanguage } from "@/contexts/language-context"
 import { useEffect, useState, useRef } from "react"
@@ -22,6 +22,7 @@ const defaultTranslations = {
     services: "Services",
     testimonials: "Testimonials",
     contact: "Contact",
+    portfolio: "Portfolio",
   },
   pt: {
     home: "Início",
@@ -29,6 +30,7 @@ const defaultTranslations = {
     services: "Serviços",
     testimonials: "Depoimentos",
     contact: "Contato",
+    portfolio: "Portfólio",
   },
   es: {
     home: "Inicio",
@@ -36,6 +38,7 @@ const defaultTranslations = {
     services: "Servicios",
     testimonials: "Testimonios",
     contact: "Contacto",
+    portfolio: "Portafolio",
   },
 }
 
@@ -82,6 +85,7 @@ export default function Navbar({
     { id: "about" as Section, icon: User, label: navTranslations.about },
     { id: "services" as Section, icon: Briefcase, label: navTranslations.services },
     { id: "testimonials" as Section, icon: MessageSquare, label: navTranslations.testimonials },
+    { id: "portfolio" as Section, icon: FolderOpen, label: navTranslations.portfolio },
     { id: "quiz" as Section, icon: Gift, label: "", isGift: true },
     { id: "contact" as Section, icon: Mail, label: navTranslations.contact, disabled: !quizCompleted },
   ]
