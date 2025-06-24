@@ -42,6 +42,13 @@ export default function HomeSection({ language }: HomeSectionProps) {
 
   const t = translations[language] || translations.en
 
+  const handleCTAClick = () => {
+    const contactEvent = new CustomEvent("navigateToSection", {
+      detail: { section: "contact" },
+    })
+    window.dispatchEvent(contactEvent)
+  }
+
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -87,8 +94,9 @@ export default function HomeSection({ language }: HomeSectionProps) {
             transition={{ duration: 0.8, delay: 1 }}
           >
             <Button
+              onClick={handleCTAClick}
               size="lg"
-              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg rounded-full transition-all duration-300 hover:scale-105"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/25"
             >
               {t.cta}
             </Button>
@@ -102,19 +110,59 @@ export default function HomeSection({ language }: HomeSectionProps) {
           className="flex justify-center order-first lg:order-last"
         >
           <div className="relative">
+            {/* Animated background rings */}
             {isMounted && (
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                className="absolute inset-0 rounded-full border border-blue-500/20"
-                style={{ width: "120%", height: "120%", left: "-10%", top: "-10%" }}
-              />
+              <>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                  className="absolute inset-0 rounded-full border border-blue-500/20"
+                  style={{ width: "120%", height: "120%", left: "-10%", top: "-10%" }}
+                />
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                  className="absolute inset-0 rounded-full border border-purple-500/15"
+                  style={{ width: "140%", height: "140%", left: "-20%", top: "-20%" }}
+                />
+              </>
             )}
-            <img
-              src="/placeholder.svg?height=280&width=280"
-              alt="João Vittor - Professional Portrait"
-              className="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-blue-500/30 shadow-2xl"
-            />
+
+            {/* Glowing backdrop */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl scale-110" />
+
+            {/* Main portrait */}
+            <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }} className="relative z-10">
+              <img
+                src="/images/joao-vittor-portrait.png"
+                alt="João Vittor - Professional Portrait"
+                className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover border-4 border-white/20 shadow-2xl backdrop-blur-sm"
+                style={{
+                  filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))",
+                }}
+              />
+            </motion.div>
+
+            {/* Floating elements */}
+            {isMounted && (
+              <>
+                <motion.div
+                  animate={{ y: [-10, 10, -10], rotate: [0, 5, 0] }}
+                  transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                  className="absolute top-4 right-4 w-6 h-6 bg-blue-400/30 rounded-full blur-sm"
+                />
+                <motion.div
+                  animate={{ y: [10, -10, 10], rotate: [0, -5, 0] }}
+                  transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                  className="absolute bottom-8 left-4 w-4 h-4 bg-purple-400/30 rounded-full blur-sm"
+                />
+                <motion.div
+                  animate={{ y: [-5, 15, -5], rotate: [0, 10, 0] }}
+                  transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                  className="absolute top-1/2 -right-2 w-3 h-3 bg-cyan-400/30 rounded-full blur-sm"
+                />
+              </>
+            )}
           </div>
         </motion.div>
       </div>
